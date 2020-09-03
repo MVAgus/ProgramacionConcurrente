@@ -12,6 +12,15 @@ package TP2;
 public class PruebaGit {
     
     
+    private int año;
+    private String color;
+    private String nombreGenerico;
+    
+    public PruebaGit(int a, String col, String nG){
+        this.año = a;
+        this.color = col;
+        this.nombreGenerico = nG;
+    }
     
     
 }
