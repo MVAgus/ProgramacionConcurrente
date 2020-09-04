@@ -9,17 +9,23 @@ package TP2;
  *
  * @author mano_
  */
-public class Cliente extends Thread {
+public class Cliente  {
     
-    public void run(){
-        System.out.println("soy " +Thread.currentThread().getName());
-        Recurso.uso();
-        try {
-            Thread.sleep(2000);
-        }catch (InterruptedException e){
-            
-        }
+    private String nombre;
+    private int[] carroCompra;
+    
+    public Cliente(String nom,int[] a){
+        this.nombre = nom;
+        this.carroCompra = a;
     }
+    
+    public String getNombre(){
+        return this.nombre;
+    }
+    public int[] getCarroCompra(){
+        return this.carroCompra;
+    }
+   
     
     
     
