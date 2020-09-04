@@ -12,12 +12,33 @@ package EjemploHilos;
 public class Test {
     
     public static void main(String[] args){
-        PingPong t1 = new PingPong("PING",33);
-        PingPong t2 = new PingPong("PONG",10);
+        PingPong o1 = new PingPong("PING",30);
+        PingPong o2 = new PingPong("PONG",10);
+        
+        PingPong o3 = new PingPong("PANG",15);
+        
+        PingPong o4 = new PingPong("PUNG",20);
+        
+        Thread t1= new Thread(o1);
+        Thread t2= new Thread(o2);
+        Thread t3= new Thread(o3);
+        Thread t4= new Thread(o4);
+        
         
         //activacion
         t1.start();
         t2.start();
+        t3.start();
+        t4.start();
+        
+        for (int i = 0; i <= 100000; i++){
+            System.out.println("hola");
+            try {
+                Thread.sleep(5000);
+            } catch(InterruptedException e){
+                
+            }
+        }
         
         //espera unos segundos
         try {

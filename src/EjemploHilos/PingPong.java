@@ -9,7 +9,7 @@ package EjemploHilos;
  *
  * @author mano_
  */
-public class PingPong extends Thread {
+public class PingPong implements Runnable {
     
     private String cadena; //Lo que va escribir
     private int delay;//Tiempo entre escritura
@@ -18,14 +18,16 @@ public class PingPong extends Thread {
         delay = cantMs;
     }
     
+    @Override
     public void run(){
         for (int i = 1; i < delay*10; i++){
             System.out.println(cadena+"");
-//        try {
-//            Thread.sleep(delay);
-//        } catch (InterruptedException e){
+        try {
+         Thread.sleep(delay);
+        } catch (InterruptedException e){
 //            
 //        }
         }
     }
+}
 }
