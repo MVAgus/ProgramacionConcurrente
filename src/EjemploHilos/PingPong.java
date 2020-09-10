@@ -9,25 +9,33 @@ package EjemploHilos;
  *
  * @author mano_
  */
-public class PingPong implements Runnable {
+public class PingPong extends Thread {
     
-    private String cadena; //Lo que va escribir
-    private int delay;//Tiempo entre escritura
+    private String cadena;
+    private int delay;//info de las iteraciones
+    private Dato miD; // para mantener el total
+    private int miCta = 0; //para contar mis iteraciones
+    
     public PingPong(String cartel,int cantMs){
-        cadena = cartel;
-        delay = cantMs;
+        super(cartel);
+        this.delay = cantMs;
+    }
+    
+    public PingPong(String cartel, int cantMs, Dato dd){
+        this(cartel,cantMs);
+        this.miD = dd;
     }
     
     @Override
     public void run(){
-        for (int i = 1; i < delay*10; i++){
-            System.out.println(cadena+"");
-        try {
-         Thread.sleep(delay);
-        } catch (InterruptedException e){
-//            
-//        }
+        for (int i = 1; i < delay*2; i++){
+            //System.out.println(cadena+"");
+            miCta++;
+            this.miD.contar();
+   
         }
+        System.out.println(miCta+ " veces "+this.getName());
     }
+    
 }
-}
+
