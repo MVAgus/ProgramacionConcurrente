@@ -12,13 +12,27 @@ package TP3ExclusionMutua;
 public class Main {
     
    public static void main (String[] args){
-       VerificarCuenta vc = new VerificarCuenta();
-       Thread Luis = new Thread(vc,"Luis");
-       Thread Manuel = new Thread(vc,"Manuel");
-       Luis.start();
-       Manuel.start();
        
-       
+//--------------------------------------------
+//       Prueba del punto 1
+//       VerificarCuenta vc = new VerificarCuenta();
+//       Thread Luis = new Thread(vc,"Luis");
+//       Thread Manuel = new Thread(vc,"Manuel");
+//       Luis.start();
+//       Manuel.start();
+//---------------------------------------------
+
+
+      EjecutarAccion acc = new EjecutarAccion();
+      Thread Orco = new Thread(acc,"Orco");
+      Thread Curandero = new Thread(acc,"Curandero");
+      
+      Orco.start();
+      Curandero.start();
+    
+      
+      
+      
    }
     
 }
