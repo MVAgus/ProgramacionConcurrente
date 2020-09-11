@@ -16,7 +16,7 @@ public class VerificarCuenta implements Runnable {
     
     private CuentaBanco cb = new CuentaBanco();
     
-    private void HacerRetiro(int cantidad) throws InterruptedException{
+    private synchronized void HacerRetiro(int cantidad) throws InterruptedException{
         
         if (cb.getBalance() >= cantidad){
             System.out.println(Thread.currentThread().getName() + " esta realizando un retiro de: "+cantidad+ ".");
@@ -27,7 +27,7 @@ public class VerificarCuenta implements Runnable {
         
         System.out.println(Thread.currentThread().getName()+" Los fondos son de : "+cb.getBalance());
     } else {
-            System.out.println("No hay suficiente dinero en la cuenta para relaizar el retiro del SR. "+Thread.currentThread().getName());
+            System.out.println("No hay suficiente dinero en la cuenta para realizar el retiro del SR. "+Thread.currentThread().getName());
             System.out.println("Su saldo actual es de "+cb.getBalance());
             Thread.sleep(1000);
         }

@@ -14,4 +14,10 @@ de 10 y en el medio Luis realiza un retiro de 10 entonces entonces no se sabe si
 el retiro cuando habia 50 pesos en la cuenta o si habian 40 que es los 10 que habia sacado Manuel.
 
 La correcion que deberia realizar es que los hilos se ejecuten de manera sincronizada.
+Para esto haria que la operacion hacer retiro de la clase verificar cuenta se ejecute de manera
+atomica. 
+
+Al convertir a synchronized el metodo HacerRetiro lo que se logra es que primero antes de ejecutarse
+el hilo de Manuel primero termine la ejecucion el hilo de Luis.
+
 
