@@ -9,19 +9,21 @@ package TP3ExclusionMutua;
  *
  * @author mano_
  */
-public class CuentaBanco {
+public class Letra implements Runnable {
     
-    private int balance = 50;
+    private String letra;
+    private Turno t;
     
-    public CuentaBanco(){
+    public Letra(String cadena, Turno tr){
+        this.letra = cadena;
+        this.t = tr;
+    }
+    
+    public void run(){
         
-    }
-    
-    public int getBalance(){
-        return balance;
-    }
-    
-    public synchronized void retiroBancario(int retiro){
-        balance = balance - retiro;
+        
+        
+        
+        
     }
 }

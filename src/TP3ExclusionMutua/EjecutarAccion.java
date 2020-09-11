@@ -14,21 +14,26 @@ public class EjecutarAccion implements Runnable {
 
 private Vida vid = new Vida();
 
-private void realizarAccion(){
+private  void realizarAccion(){
     
     if (Thread.currentThread().getName().equals("Orco")){
-        vid.golpear();
+        vid.decrementarVida();
         System.out.println("El personaje "+Thread.currentThread().getName()+" realizo un golpe");
         System.out.println("La vida ahora es de "+vid.getCantidad());
+     
     } 
+    
     else {
-        vid.curar();
-        System.out.println("El personaje "+Thread.currentThread().getName()+ "realizo una curacion");
+        vid.incrementarVida();
+        System.out.println("El personaje "+Thread.currentThread().getName()+ " realizo una curacion");
         System.out.println("La vida ahora es de "+vid.getCantidad());
+          
+        }
     }
     
-}
 
+
+@Override
 public void run(){
     this.realizarAccion();
 }

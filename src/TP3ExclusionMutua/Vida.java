@@ -17,15 +17,14 @@ public class Vida{
         
     }
     
-    public void golpear(){
-        cantidad = cantidad - 3;
+    public synchronized void decrementarVida(){
+        this.cantidad = this.cantidad - 3;
     }
-    
-    public int getCantidad(){
+    public synchronized int getCantidad(){
         return this.cantidad;
     }
     
-    public void curar(){
-        cantidad = cantidad + 3;
+    public synchronized void incrementarVida(){
+        this.cantidad = this.cantidad + 3;
     }
 }

@@ -9,19 +9,16 @@ package TP3ExclusionMutua;
  *
  * @author mano_
  */
-public class CuentaBanco {
+public class Turno {
     
-    private int balance = 50;
+    private String[] lista = {"A","BB","CCC"};
+    private int turno = 0;
     
-    public CuentaBanco(){
-        
+    public synchronized boolean esTurno(String caracter){
+        return this.lista[turno].equals(caracter);
     }
     
-    public int getBalance(){
-        return balance;
-    }
-    
-    public synchronized void retiroBancario(int retiro){
-        balance = balance - retiro;
+    public void next(){
+        this.turno = (turno+1) % 3;
     }
 }

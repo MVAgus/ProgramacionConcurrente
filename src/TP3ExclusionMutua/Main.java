@@ -29,10 +29,29 @@ public class Main {
       
       Orco.start();
       Curandero.start();
+      
+      
+      
     
+
+//---------------------------------------------
+// Prueba del punto 3
+
+//       Turno cod = new Turno();
+//       Letra l1 = new Letra("A",cod);
+//       
+//       Thread a  = new Thread(l1);
+//       
+//       Letra l2 = new Letra("BB",cod);
+//       Thread b  = new Thread(l2);
+//       Letra l3 = new Letra("CCC",cod);
+//       Thread c  = new Thread(l3);
+//       a.start();
+//       b.start();
+//       c.start();
+//       
       
-      
-      
+//---------------------------------------------
    }
     
 }
