@@ -1,0 +1,17 @@
+PUNTO 1 
+Tengo 3 clases. Main , CuentaBanco y la clase VerificarCuenta(unHilo)
+
+Tengo el Hilo llamado Luis y el hilo llamado Manuel
+
+En la clase cuenta banco tengo el balance inicializado en 50 
+y un metodo llamado retiroBancario que le resta el int ingresado por parametro
+a balance 
+
+Ejecucion nro1 
+Lo que sucede con este codigo es que como los hilos no estan sincronizados se produce 
+una inconsistencia a la hora de realizar los retiros de la cuenta,es decir, Manuel realiza un retiro
+de 10 y en el medio Luis realiza un retiro de 10 entonces entonces no se sabe si Luis realizo
+el retiro cuando habia 50 pesos en la cuenta o si habian 40 que es los 10 que habia sacado Manuel.
+
+La correcion que deberia realizar es que los hilos se ejecuten de manera sincronizada.
+
