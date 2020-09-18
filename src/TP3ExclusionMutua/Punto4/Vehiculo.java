@@ -12,44 +12,119 @@ package TP3ExclusionMutua.Punto4;
 public class Vehiculo {
     
     private String marca;
-    private String modelo;
-    private String color;
+    private int modelo;
     private String matricula;
-    private int capacidadCombustible;
-    private double cantidadCombustible;
-    private int kmService;
-    private int kilometraje;
-    private int reserva;
+    private int capacidadTanque = 20;
+    private double cantNafta = 20;
+    private int cantKm = 0;
+    private Surtidor s;
+    private int reserva = 5;
+   
     
     
     
     
-    public Vehiculo(String matricula, int capacidadCombustible,double cantNafta, int reserva) {
+    public Vehiculo(String matricula,int mod,String marca,Surtidor s) {
         
         this.matricula = matricula;
-        this.capacidadCombustible = capacidadCombustible;
-        this.cantidadCombustible = cantNafta;
-        this.reserva = reserva;
+        this.modelo = mod;
+        this.marca = marca;
+        this.s = s;
+        
+    }
+    
+    public boolean andarKm(int km){
+        //los autos consumen cada 1 km 0.5 litros de nafta
+        //si devuelve false es porque el auto llego a la reserva
+        boolean respuesta = true;
+        
+        if (this.cantNafta > this.reserva){
+            System.out.println("El auto "+Thread.currentThread().getName()+" avanzo: "+km+" km");
+            this.cantKm += km;
+            this.cantNafta = this.cantNafta - (0.5*km);
+        } else {
+            respuesta = false;
+            System.out.println("El auto "+Thread.currentThread().getName()+"  llego a la reserva. Necesita nafta");
+            }
+        return respuesta;
+        }
+      
+        
+    
+        public void cargarCombustible(){
+        //Siempre que se carga combustible se llena el tanque
+        //Se decrementan los litros del surtidor
+        
+//        double cantidadACargar = this.capacidadTanque-this.cantNafta;
+        try {
+           this.s.decrementar(20);
+           this.cantNafta = 20;
+           System.out.println("Ahora el auto"+Thread.currentThread().getName()+" tiene "+this.cantNafta+" lts de nafta");
+           Thread.sleep(3000);
+        }catch (InterruptedException e){
+            
+        }
+        }
+       
+
+        public Surtidor getSurtidor(){
+            return this.s;
+        }
+            
       
     }
     
-    public boolean andarKm(int km) {
-        //si devuelve true es porque el auto llego a la reserva
-        // cada auto cada 1 km consume 0.25 litros de nafta
-        boolean respuesta = false;
-        this.kilometraje += km;
-        System.out.println("Ahora el kilometraje del auto "+Thread.currentThread().getName()+" es de"+this.kilometraje);
-        this.cantidadCombustible = this.cantidadCombustible - (km * 0.25);
-        if (this.cantidadCombustible <= this.reserva) {
-            respuesta = true;
-        }
-        return respuesta;
-    }
     
-    public void cargarCombustible(int pesos,Surtidor s) {
+    
+    
 
-        s.setActual(pesos);
 
-    }    
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public void andarKm(int km) {
+//       
+//        this.cantKm += km;
+//        
+//        System.out.println("KM actual del auto "+Thread.currentThread().getName()+" es de"+this.cantKm);
+//        this.cantNafta = this.cantNafta - (km * 0.25);
+//        
+//        if (cantNafta <= 5) {
+//            System.out.println("El auto "+Thread.currentThread().getName()+" esta con la reserva");
+//            cargarCombustible();
+//        } 
+//    }
+//    
+//    public void cargarCombustible(){
+//        this.cantNafta = 20;
+//        this.s.decrementar();
+//    }
+//    
+//    public String getMatricula(){
+//        return this.matricula;
+//    }
+    
+
 

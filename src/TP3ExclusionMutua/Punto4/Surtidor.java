@@ -11,28 +11,35 @@ package TP3ExclusionMutua.Punto4;
  */
 public class Surtidor {
     
-    private int capacidadTotal;
-    private double actual;
+    private double capacidadTotal = 1000;
+    private double capacidadActual = 1000;
+    private double precioPorLitro = 46;
+  
 
-    public Surtidor(int capacidadTotal, int actual) {
-        this.capacidadTotal = capacidadTotal;
-        this.actual = actual;
+    public synchronized double getCapacidadActual() {
+        return this.capacidadActual;
     }
-
     
-    public synchronized double getActual() {
-        return actual;
+    public synchronized double getCapacidadTotal(){
+        return this.capacidadTotal;
     }
 
-    public synchronized void setActual(int pesos) {
-        double cantLit = pesos*0.25;
-        if (cantLit <= this.actual){
-            this.actual = this.actual - cantLit;
-            System.out.println("Litros cargados: "+cantLit);
+    public synchronized void decrementar(double litrosACargar) {
+        //el surtidor esta aca en cipolleti y el litro de nafta esta a $46
+        
+        if (this.capacidadActual > litrosACargar){
+            //hay nafta disponible en el surtidor
+            this.capacidadActual = this.capacidadActual - litrosACargar;
+            System.out.println("Litros cargados: "+litrosACargar);
         } else {
-            System.out.println("No queda mas nafta disponible en el surtidor");
+            System.out.println("No hay nafta disponible en el surtidor");
         }
-        System.out.println("Cantidad de nafta restante en el surtidor "+this.actual);
+        System.out.println("Cantidad de nafta en el surtidor: "+this.capacidadActual);
+        
+    }
+    
+    public double getPrecioPorLitro(){
+        return this.precioPorLitro;
     }
     
     

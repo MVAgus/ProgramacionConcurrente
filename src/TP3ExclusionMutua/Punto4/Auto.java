@@ -13,34 +13,22 @@ public class Auto extends Vehiculo implements Runnable {
     
   
   
-    public Auto(String matricula, int capacidadCombustible,double cantNf, int reserva){
-        super(matricula,capacidadCombustible,cantNf,reserva);
+    public Auto(String matricula,int mod,String marca,Surtidor sr){
+        super(matricula,mod,marca,sr);
     }
     
-    public void run(){
+    public void run() {
         
-        for (int i = 1; i <= 4; i++){
-            Surtidor sr = new Surtidor(500,500);
-            int km = i*5;
-            try {
-            if (this.andarKm(km)){
-               System.out.println("El auto "+Thread.currentThread().getName()+" llego a la reserva");
-               super.cargarCombustible(i*100,sr);
-               Thread.sleep(2000);
-            } else {
-                System.out.println("El auto "+Thread.currentThread().getName()+" avanzo "+km+" km");
+            
+            for (int i = 1; i <= 4; i++){
+//            while (super.getSurtidor().getCapacidadActual() >= 0){
+            boolean respuesta = this.andarKm(15);
+            if (!respuesta) {
+                this.cargarCombustible();
             }
-            } catch (InterruptedException e){
-             
-            }
+           
             
         }
-        
     }
-    
-   
-    
-   
-
     
 }

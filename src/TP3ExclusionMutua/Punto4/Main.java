@@ -13,15 +13,16 @@ public class Main {
     public static void main (String[] args){
         
       
-        Auto a1 = new Auto("Auto 1",40,10,5);
-        Auto a2 = new Auto("Auto 2",30,15,5);
-        
-        Thread t1 = new Thread(a1,"Auto1");
-        Thread t2 = new Thread(a2,"Auto2");
-        
+        Surtidor shell = new Surtidor();
 
-        t2.start();
-        t1.start();
+            for (int i = 1; i <= 6; i++){
+            Auto a = new Auto(Integer.toString(i),i,Integer.toString(i),shell);
+            Thread ta = new Thread(a,Integer.toString(i));
+            
+            ta.start();
+                
+            }     
+        
     }
-    
 }
+
