@@ -31,14 +31,14 @@ public class Letra implements Runnable {
 
     public void escribir() {
       if (Thread.currentThread().getName().equals("A")){
-          this.tur.imprimir1("A",this.cantVeces);
+          this.tur.imprimir1(this.let,this.cantVeces);
        
       }
       if (Thread.currentThread().getName().equals("B")){
-          this.tur.imprimir2("B", this.cantVeces);
+          this.tur.imprimir2(this.let, this.cantVeces);
       }
       if (Thread.currentThread().getName().equals("C")){
-          this.tur.imprimir3("C", cantVeces);
+          this.tur.imprimir3(this.let, cantVeces);
       }
     }
 }
